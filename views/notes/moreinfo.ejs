@@ -1,0 +1,90 @@
+  <%-  include ("../partials/header")   %>
+  <%-   include ("../partials/errormsg")    %>
+
+  
+   <div class="container">
+     
+    <div class="row">
+         <div class="col-md-3">  
+            <h4>Heading</h4>
+            <ul class="list-group">
+               <li class="list-group-item active">Cras justo odio</li>
+               <li class="list-group-item">Dapibus ac facilisis in</li>
+               <li class="list-group-item">Morbi leo risus</li>
+               <li class="list-group-item">Porta ac consectetur ac</li>
+               <li class="list-group-item">Vestibulum at eros</li>
+             </ul>
+             <div id="map"></div>
+         </div>
+         <div class="col-md-9 col-sm-6" >
+
+            <div class="img-thumbnail">
+               <img src="<%= moredata.image  %>" class="img-fluid" alt="">
+               <h3 class="pl-3"><%=  moredata.title %></h3>
+                  <p><%- moredata.outcomes%></p>
+                  <p> <em>Submitted by-<%= moredata.author.username %></em></p>
+               <% if(currentUser && currentUser._id.equals(moredata.author.id)) {%>
+                  <div>
+                     <a href="/materials/<%= moredata.id  %>/edit" class="btn btn-sm btn-warning">Edit post</a>
+                     <form id="aa"  action="/deletes/<%= moredata.id  %>"   method="POST">
+                       <button class="btn btn-sm btn-danger">delete post</button>
+                    </form>
+                    </div>
+            <%}%>
+         </div>
+             <div class="jumbotron pt-4">
+                <div class="text-right">
+                  <a href="/materials/<%= moredata._id  %>/commentform" class="btn btn-lg btn-success">Enter comment</a>
+                </div>
+                <hr>
+                <% moredata.comments.forEach((data)=>{  %> 
+                 <div class="row">
+                    <div class="col-md-12">
+                        <p class="mb-0"> <b>Author</b>: <%= data.author.username  %>  <span class="float-right">10days ago</span></p>
+                        <p>
+                           <%= data.comment%>
+                        </p> 
+                                  
+                          <% if(currentUser && currentUser._id.equals(data.author.id)){ %>
+                           <a id="aa"  href="/materials/<%= moredata._id %>/editcmt/<%= data._id %>/newcomment"class="btn btn-sm btn-warning">Edit</a>
+                           <form action="/materials/<%=  moredata._id %>/delete/<%= data._id%>" method="POST" style="display: inline;" >
+                              <button class="btn btn-sm btn-danger">delete</button>
+                           </form>
+                        <%}%>
+                    </div>
+                 </div>
+                 <% }) %>
+             </div>
+         </div> 
+    </div>
+   </div>
+   <script>
+      function initMap() {
+        var lat = <%= moredata.lat %>;
+        var lng = <%= moredata.lng %>;
+        var center = {lat: lat, lng: lng };
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 8,
+            center: center,
+            scrollwheel: false
+        });
+        var contentString = 
+        `
+          <strong><%= moredata.name %><br />
+          <%= moredata.location %></strong>
+          <p><%= moredata.description %></p>
+        `
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+        var marker = new google.maps.Marker({
+            position: center,
+            map: map
+        });
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+      }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNS7sMGskdPhSDH6DH1KpriOjzACuZ2Cc&callback=initMap"></script>
+<%-  include ("../partials/footer")   %>

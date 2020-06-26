@@ -1,0 +1,36 @@
+<%-  include ("./partials/header")       %>
+<%-   include ("./partials/errormsg")    %>
+
+<div class="container">
+   <div class="row mt-3">
+     <div class="col-md-4 m-auto">
+      <div class="card card-body">
+        <h1 class="text-center">Register</h1>
+        <form action="/forgot" method="POST">
+          <div class="form-group">
+              <label for="email">Email</label>
+              <input type="text" class="form-control" id = "email" placeholder="Enter you email" name="email">
+          </div>  
+              <button class="btn btn-lg btn-warning btn-block">Reset Password</button>
+        </form>
+      </div>
+     </div>
+   </div>
+
+  <div class="text-center">
+<!--      
+    <a href="/materials" >Go back</a> -->
+    <%-    include  ("./partials/footer")      %>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

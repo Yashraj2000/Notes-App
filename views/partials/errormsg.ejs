@@ -1,0 +1,36 @@
+    
+  <%  if(typeof err != 'undefined'){ %>
+
+ <% err.forEach(function(errs){ %>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <%= errs.msg %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+ <% }) %>
+
+<%} %>
+
+ <div class="container text-center mt-2">
+<%  if(e != ''){ %>
+     <div class="alert alert-warning alert-dismissible fade show" role="alert">
+         <%= e %>
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div> 
+ <%} %>
+
+
+ 
+<%  if(s != ''){ %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <%= s %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div> 
+<%} %>
+
+</div>

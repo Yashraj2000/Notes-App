@@ -1,0 +1,43 @@
+<%-  include ("../partials/header")       %>
+<%-   include ("../partials/errormsg")    %>
+
+<div class="container">
+
+ <form action="/materials" method="POST" style="width: 30%; margin: 0 auto; margin-top: 30px;">
+         <h2>ADD new subject data</h2>
+         <br>
+         <div class="form-group">
+            <input type="text" class="form-control"  placeholder="Name of material" name="title">
+         </div>  
+         
+         <div class="form-group">
+            <input type="text" class="form-control" placeholder="image of material" name="image">
+         </div>
+
+         <div class="form-group">
+            <textarea type="text" cols="10" rows="5" class="form-control" placeholder="Course outcome" name="outcomes"></textarea>
+         </div>
+         <div class="form-group">
+            <input type="text" class="form-control" placeholder=" location of material" name="location">
+         </div>
+         <div class="form-group">
+            <button class="btn btn-lg btn-secondary btn-block">submit</button>
+         </div>
+  </form>
+  <div class="text-center">
+     
+    <a href="/materials" >Go back</a>
+    <%-    include  ("../partials/footer")      %>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

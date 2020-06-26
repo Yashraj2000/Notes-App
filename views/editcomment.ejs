@@ -1,0 +1,18 @@
+<%-  include ("partials/header")    %>
+<%-   include ("partials/errormsg")    %>
+
+<form action="/materials/<%= notesdata._id %>/editcmt/<%= edits._id %>?_method=PUT" method="POST"  style="width: 30%; margin: 0 auto;">
+ 
+    <h1>Edit comment <%= edits.author.username %></h1>
+    <div class="form-group">
+            <input type="text" class="form-control" name ="value[comment]" value="<%= edits.comment %>">
+    </div>
+
+    <div class="form-group">
+            <button class="btn btn-lg btn-primary">EDIT</button>        
+        </div>
+
+
+</form>
+
+<%-  include ("partials/footer")    %>

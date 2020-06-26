@@ -1,0 +1,26 @@
+
+#aa{
+    display: inline;
+}
+
+p{  
+    text-align: justify;
+}
+
+.img-thumbnail p{
+  text-align: justify;
+  padding: 10px;
+}
+
+.img-thumbnail img{
+ width: 100%;
+  }
+
+  .img-thumbnail{
+      padding: 0;
+  }
+
+#map{
+    height: 400px;
+    width: 100%;
+}

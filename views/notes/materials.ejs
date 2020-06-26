@@ -1,0 +1,46 @@
+<%- include ("../partials/header") %>  
+<%-   include ("../partials/errormsg")    %>
+
+<!-- "-" after % this means it run the file as a code rather than simply including it -->
+<!-- above is the new syntax for partials -->
+<div class="container text-center">
+   <header class="jumbotron">
+      <h1>NOTES FOR THIS YEAR</h1>
+      <p>Will add other data soon</p>
+      <p>
+          <a href="/materials/forms" class="btn btn-lg btn-warning">ADD NEW DATA</a>
+      </p>
+   </header>
+<!-- display:flex; flex-wrap:wrap;   if there are images og unequal heigth and they are going off the grid use this code  -->
+     <div class="row">
+         <%  content.forEach((add)=>{  %>
+            <div class="col-md-4 col-sm-6">
+               <div class="img-thumbnail">
+                  <img src=" <%=  add.image   %>  "  class="img-thumbnail" >
+                    <div class="caption">
+                     <h4> <%=  add.title %>   </h4>
+                      <!-- <p><%- add.outcomes.substring(0,100)  %>....</p>   -->
+                      <!-- (-) makes sure thar rather than rendering as a normal text it will render it as a code -->
+                    </div>
+                      <p class="text-center">  <a href="/materials/<%=add._id%>" class="btn btn-primary">more info</a>  </p>
+                      <!-- <p> <%= add.created.toDateString() %>  </p> -->
+
+               </div>
+            </div>
+           <% })  %>
+
+    </div>    
+
+
+
+<!-- <a href="/" class="btn-secondary btn btn-large">go back</a> -->
+<%- include ("../partials/footer") %>
+
+</div>
+
+
+
+
+
+
+
